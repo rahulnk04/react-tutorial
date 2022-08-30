@@ -4,6 +4,8 @@ import NavBar from "./components/layout/NavBar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import { HashRouter, Routes, Route } from "react-router-dom";
+import TestA from "./components/layout/TestA";
+import TestB from "./components/layout/TestB";
 
 const getDesignTokens = (mode) => ({
   palette: {
@@ -17,9 +19,7 @@ const getDesignTokens = (mode) => ({
     ...(mode === "dark" && {
       background: {
         default: "#1A202C",
-        // default: blueGrey[900],
-        // paper: blueGrey[900],
-        paper: "#1a202c46",
+        paper: "#1A202C",
       },
     }),
     text: {
@@ -56,7 +56,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <HashRouter basename="/">
           <Routes>
-            <Route path="/" element={<NavBar />}></Route>
+            <Route path="/" element={<NavBar />}>
+              <Route exact path="/" element={<TestA />} />
+              <Route exact path="testa" element={<TestA />} />
+              <Route exact path="testb" element={<TestB />} />
+            </Route>
           </Routes>
         </HashRouter>
       </ThemeProvider>
