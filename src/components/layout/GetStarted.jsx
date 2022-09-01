@@ -36,6 +36,7 @@ const GetStarted = () => {
           </Box>
         </Box>
       </Box>
+      <Box></Box>
     </Box>
   );
 };
