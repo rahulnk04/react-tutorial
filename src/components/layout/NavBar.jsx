@@ -19,8 +19,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import Tooltip from "@mui/material/Tooltip";
-import { Outlet, useNavigate } from "react-router-dom";
-
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import magHackLogo from "../../assets/img/MainLogo.png";
 import { ColorModeContext } from "../../App";
 
 const drawerWidth = 280;
@@ -78,6 +78,7 @@ const NavBar = () => {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar
+          elevation={1}
           position="fixed"
           sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
         >
@@ -93,13 +94,23 @@ const NavBar = () => {
             >
               <MenuIcon />
             </IconButton>
+            <Box sx={{ mt: 1, mr: 2 }}>
+              <Link to="/">
+                <img
+                  //   style={{ cursor: "pointer" }}
+                  width={180}
+                  src={magHackLogo}
+                  alt="MagHack"
+                />
+              </Link>
+            </Box>
             <Typography
-              variant="h6"
+              sx={{ flexGrow: 1, fontSize: 16 }}
+              variant="overline"
               noWrap
               component="div"
-              sx={{ flexGrow: 1 }}
             >
-              Persistent drawer
+              React Tutorial
             </Typography>
             <Tooltip
               title={theme.palette.mode === "dark" ? "Light Mode" : "Dark Mode"}
@@ -137,8 +148,7 @@ const NavBar = () => {
           <Box sx={overFlowScroll}>
             <List>
               {[
-                "Inbox",
-                "Starred",
+                "Getting Started",
                 "Send email",
                 "Drafts",
                 "ok",
@@ -158,7 +168,7 @@ const NavBar = () => {
                 "Drafts",
                 "ok",
               ].map((text, index) => (
-                <ListItem key={index} disablePadding>
+                <ListItem dense key={index} disablePadding>
                   <ListItemButton
                     onClick={() => {
                       navigate("/testb");

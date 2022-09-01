@@ -6,6 +6,7 @@ import { grey } from "@mui/material/colors";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import TestA from "./components/layout/TestA";
 import TestB from "./components/layout/TestB";
+import GetStarted from "./components/layout/GetStarted";
 
 const getDesignTokens = (mode) => ({
   palette: {
@@ -22,6 +23,17 @@ const getDesignTokens = (mode) => ({
         paper: "#1A202C",
       },
     }),
+    button: {
+      ...(mode === "light"
+        ? {
+            primary: grey[900],
+            secondary: grey[800],
+          }
+        : {
+            primary: "#fff",
+            secondary: grey[500],
+          }),
+    },
     text: {
       ...(mode === "light"
         ? {
@@ -57,7 +69,7 @@ function App() {
         <HashRouter basename="/">
           <Routes>
             <Route path="/" element={<NavBar />}>
-              <Route exact path="/" element={<TestA />} />
+              <Route exact path="/" element={<GetStarted />} />
               <Route exact path="testa" element={<TestA />} />
               <Route exact path="testb" element={<TestB />} />
             </Route>
